@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Logs</title>
+    <link rel="icon" href="UVULogo.png" type="image/x-icon" />
+
+    <!-- Bootstrap CSS from CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Fallback to local Bootstrap CSS -->
+    <script>
+      if (typeof bootstrap == "undefined") {
+        document.write('<link rel="stylesheet" href="bootstrap.min.css">');
+      }
+      </script>
+
+<!-- jQuery from CDN -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- Fallback to local jQuery -->
+<script>
+  if (typeof jQuery == "undefined") {
+    document.write('<script src="jquery.min.js"><\/script>');
+    }
+    </script>
+
+    <!-- Bootstrap JS from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Fallback to local Bootstrap JS -->
+    <script>
+      if (typeof $.fn.modal == "undefined") {
+        document.write('<script src="bootstrap.min.js"><\/script>');
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="text-center my-4">
+        <img
+          src="UVULogo.png"
+          alt="UVU Logo"
+          id="uvu-logo"
+          class="img-fluid"
+          style="max-width: 100px;"
+        />
+      </header>
+      <form>
+        <div class="form-group">
+          <label for="mode">Choose Mode:</label>
+          <select id="mode" class="form-control">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="course">Choose Course:</label>
+          <select
+            aria-label="Select Course"
+            id="course"
+            name="course"
+            data-cy="course_select"
+            class="form-control"
+          >
+            <option selected value="">Choose Courses</option>
+            <option value="cs4690">CS 4690</option>
+            <option value="cs4660">CS 4660</option>
+            <option value="cs3380">CS 3380</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="uvuIdGroup" style="display: none;">
+          <label for="uvuId">UVU ID</label>
+          <input
+            type="text"
+            id="uvuId"
+            name="uvuId"
+            data-cy="uvuId_input"
+            maxlength="8"
+            placeholder="10234567"
+            class="form-control"
+          />
+        </div>
+
+        <h3 id="uvuIdDisplay" data-cy="uvuIdDisplay" style="display: none;">
+          Student Logs for <span id="uvuIdText"></span>
+        </h3>
+        <ul data-cy="logs" class="list-group">
+          <!-- Logs will be dynamically inserted here by JavaScript -->
+        </ul>
+
+        <div class="form-group" id="newLogGroup" style="display: none;">
+          <label>New Log</label>
+          <textarea
+            aria-label="add log textarea"
+            data-cy="log_textarea"
+            class="form-control"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          data-cy="add_log_btn"
+          class="btn btn-primary"
+          disabled
+          style="display: none;"
+        >
+          Add Log
+        </button>
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
