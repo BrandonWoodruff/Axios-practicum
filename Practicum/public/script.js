@@ -91,11 +91,12 @@ $(function () {
         $logsUl.empty();
         $uvuIdDisplay.show();
         $uvuIdText.text(uvuId);
+        console.log(data)
         if (data.length > 0) {
           data.forEach(function (log) {
             const li = $("<li>").addClass("list-group-item");
             li.html(`
-              <div><small>${new Date(
+              <div><small class="text-dark">${new Date(
                 log.dateTime
               ).toLocaleString()}</small></div>
               <pre class="bg-light p-2 border"><p class="d-none">${
