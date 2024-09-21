@@ -12,6 +12,7 @@
       if (typeof bootstrap == "undefined") {
         document.write('<link rel="stylesheet" href="bootstrap.min.css">');
       }
+      console.log("bootstrap loaded");
       </script>
 
 <!-- jQuery from CDN -->
@@ -21,6 +22,7 @@
   if (typeof jQuery == "undefined") {
     document.write('<script src="jquery.min.js"><\/script>');
     }
+    console.log("jquery loaded");
     </script>
 
     <!-- Bootstrap JS from CDN -->
@@ -30,6 +32,7 @@
       if (typeof $.fn.modal == "undefined") {
         document.write('<script src="bootstrap.min.js"><\/script>');
       }
+      console.log("bootstrap js loaded");
     </script>
   </head>
   <body>
