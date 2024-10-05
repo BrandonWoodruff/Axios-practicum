@@ -1,4 +1,6 @@
 $(function () {
+  "use strict";
+
   const $courseSelect = $("#course");
   const $uvuIdInput = $("#uvuId");
   const $logsUl = $('ul[data-cy="logs"]');
@@ -9,6 +11,7 @@ $(function () {
   const $modeSelect = $("#mode");
   const $uvuIdGroup = $("#uvuIdGroup");
   const $newLogGroup = $("#newLogGroup");
+  const $form = $("form");
 
   // Dark/Light Mode Handling
   const userPref = localStorage.getItem("theme");
@@ -130,7 +133,8 @@ $(function () {
   }
 
   // Enable/disable Add Log button based on textarea content
-  $logTextarea.on("input", function () {
+  $logTextarea.on("input", function (event) {
+    event.preventDefault();
     $addLogBtn.prop(
       "disabled",
       $logTextarea.val().trim() === "" || $logsUl.html() === ""
@@ -138,7 +142,7 @@ $(function () {
   });
 
   // Handle Add Log form submission using jQuery's AJAX
-  $("form").on("submit", function (event) {
+  $form.off('submit').on("submit", function (event) {
     event.preventDefault();
     const uvuId = $uvuIdInput.val().trim();
     const courseId = $courseSelect.val();
@@ -156,9 +160,10 @@ $(function () {
           dateTime: new Date().toISOString(),
         }),
         success: function (response) {
+          event.preventDefault();
           console.log("Log added:", response);
-          fetchLogs(courseId, uvuId);
-          $logTextarea.val(""); // Clear the textarea after adding the log
+          fetchLogs(courseId, uvuId); // Refresh logs after adding new log
+          $uvuIdInput.val(uvuId); // Reset the UVU ID input
         },
         error: function (xhr, status, error) {
           console.error("Error adding log:", error);

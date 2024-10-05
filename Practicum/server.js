@@ -1,10 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const port = 3000;
+
+// Enable CORS
+app.use(cors());
 
 app.use(express.json());
 
